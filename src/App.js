@@ -1,11 +1,11 @@
-import {useEffect} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {FiSettings} from 'react-icons/fi';
-import {TooltipComponent} from '@syncfusion/ej2-react-popups';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { FiSettings } from 'react-icons/fi';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-import {Navbar, Footer, Sidebar, ThemeSettings} from './components';
+import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import {
-  Ecommerce ,
+  Ecommerce,
   Orders,
   Calendar,
   Employees,
@@ -20,7 +20,7 @@ import {
   Financial,
   ColorPicker,
   ColorMapping,
-  Editor
+  Editor,
 } from './pages';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -46,8 +46,8 @@ const App = () => {
           <div
             className='fixed right-4 bottom-4'
             style={{
-            zIndex: '1000'
-          }}>
+              zIndex: '1000',
+            }}>
             <TooltipComponent content='Settings' position='Top'>
               <button
                 type='button'
