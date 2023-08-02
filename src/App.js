@@ -28,10 +28,19 @@ import { useStateContext } from './contexts/ContextProvider';
 import './App.css';
 
 const App = () => {
-  const { activeMenu, currentColor } = useStateContext()
+  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+
+  useEffect(() => {
+    const currentThemeColor = localStorage.getItem('colorMode');
+    const currentThemeMode = localStorage.getItem('themeMode');
+    if (currentThemeColor && currentThemeMode) {
+      setCurrentColor(currentThemeColor);
+      setCurrentMode(currentThemeMode);
+    }
+  }, []);
 
   return (
-    <div>
+    <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
         <div className='flex relative dark:bg-main-dark-bg'>
           <div
@@ -42,11 +51,12 @@ const App = () => {
             <TooltipComponent content='Settings' position='Top'>
               <button
                 type='button'
+                onClick={() => setThemeSettings(true)}
                 className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white'
                 style={{
-                background: currentColor,
-                borderRadius: '50%'
-              }}>
+                  background: currentColor,
+                  borderRadius: '50%'
+                }}>
                 <FiSettings/>
               </button>
             </TooltipComponent>
@@ -71,6 +81,8 @@ const App = () => {
             </div>
 
             <div>
+              {themeSettings && (<ThemeSettings />)}
+
               <Routes>
                 {/* Dashboard */}
                 <Route path='/' element={<Ecommerce  />}/>
@@ -98,6 +110,7 @@ const App = () => {
                 <Route path='/stacked' element={<Stacked />}/>
               </Routes>
             </div>
+            <Footer />
           </div>
         </div>
       </BrowserRouter>
