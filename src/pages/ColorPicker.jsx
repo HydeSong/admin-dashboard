@@ -10,11 +10,11 @@ const change = (args) => {
 const CustomColorPicker = ({ id, mode }) => <ColorPickerComponent id={id} mode={mode} modeSwitcher={false} inline showButtons={false} change={change} />;
 
 const ColorPicker = () => (
-  <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+  <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl dark:bg-secondary-dark-bg">
     <Header category="App" title="Color Picker" />
     <div className="text-center">
       <div id="preview" />
-      <div className="flex justify-center items-center gap-20 flex-wrap">
+      <div className="flex justify-center items-center gap-20 flex-wrap dark:text-gray-200">
         <div>
           <p className="text-2xl font-semibold mt-2 mb-4">Inline Pallete</p>
           <CustomColorPicker id="inline-palette" mode="Palette" />
